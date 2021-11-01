@@ -1,0 +1,36 @@
+{
+  "name": "cooking-crafty",
+  "version": "1.0.0",
+  "description": "An application that recommends recipes based on what ingredients you have on your fridge.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "seed": "node seeds/seed.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cjohnson74/Cooking-Crafty.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cjohnson74/Cooking-Crafty/issues"
+  },
+  "homepage": "https://github.com/cjohnson74/Cooking-Crafty#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "connect-session-sequelize": "^7.1.2",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.4",
+    "express-session": "^1.17.2",
+    "sequelize": "^6.8.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.1.0",
+    "eslint-config-prettier": "^8.3.0",
+    "prettier": "^2.4.1"
+  }
+}
