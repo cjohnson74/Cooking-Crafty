@@ -9,3 +9,18 @@ User.hasMany(Recipe, {
     foreignKey: 'user_id',
     onDelete: 'CASCADE'
 });
+
+User.hasMany(Ingredient, {
+    foreignKey: 'user_id',
+    onDelete: 'CASCADE'
+});
+
+Recipe.hasMany(User, {
+    foreignKey: 'recipe_id',
+    onDelete: 'CASCADE'
+});
+
+Recipe.hasMany(Ingredient, {
+    foreignKey: 'recipe_id',
+    onDelete: 'CASCADE'
+});
