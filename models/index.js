@@ -24,3 +24,13 @@ Recipe.hasMany(Ingredient, {
     foreignKey: 'recipe_id',
     onDelete: 'CASCADE'
 });
+
+Ingredient.hasMany(Recipe, {
+    foreignKey: 'ingredient_id',
+    onDelete: 'CASCADE'
+});
+
+Ingredient.hasMany(User, {
+    foreignKey: 'ingredient_id',
+    onDelete: 'CASCADE'
+})
