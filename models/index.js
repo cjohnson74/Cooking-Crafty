@@ -44,6 +44,14 @@ Recipe.belongsToMany(User, {
     as: "recipe_users"
 });
 
+Recipe.belongsToMany(Ingredient, {
+    through: {
+        model: RecipeIngredient,
+        unqiue: false,
+    },
+    as: "recipe_ingredients"
+});
+
 User.blongsToMany(Recipe, {
     through: {
         model: UserRecipe,
@@ -51,3 +59,11 @@ User.blongsToMany(Recipe, {
     },
     as: "user_recipes"
 });
+
+User.belongsToMany(Ingredient, {
+    through: {
+        model: UserIngredient,
+        unique: false,
+    },
+    as: "user_ingredient"
+})
