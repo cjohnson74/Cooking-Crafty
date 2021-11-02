@@ -3,6 +3,7 @@ CREATE DATABASE cookingcrafty_db;
 
 USE cookingcrafty_db;
 
+
 DROP TABLE IF EXISTS user;
 CREATE TABLE user (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
