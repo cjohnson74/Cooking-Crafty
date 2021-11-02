@@ -66,4 +66,20 @@ User.belongsToMany(Ingredient, {
         unique: false,
     },
     as: "user_ingredient"
-})
+});
+
+Ingredient.belongsToMany(User, {
+    through: {
+        model: UserIngredient,
+        unique: false,
+    },
+    as: "ingredient_users"
+});
+
+Ingredient.belongsToMany(Recipe, {
+    through: {
+        model: RecipeIngredient,
+        unique: false,
+    },
+    as: "ingredient_recipes"
+});
