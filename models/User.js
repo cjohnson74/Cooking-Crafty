@@ -7,3 +7,26 @@ class User extends Model {
         return bcrypt.compareSync(loginPw, this.password);
     }
 }
+
+
+User.init(
+    {
+        id: {
+            type: DataType.INTEGER,
+            allowNull: false,
+            primaryKey: true,
+            autoIncrement: true,
+        },
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        email: {
+            type: DataTypes.STRING,
+            unique: true,
+            validate: {
+                isEmail: true,
+            }
+        }
+    }
+)
