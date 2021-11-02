@@ -34,3 +34,20 @@ Ingredient.hasMany(User, {
     foreignKey: 'ingredient_id',
     onDelete: 'CASCADE'
 })
+
+
+Recipe.belongsToMany(User, {
+    through: {
+        model: UserRecipe,
+        unique: false,
+    },
+    as: "recipe_users"
+});
+
+User.blongsToMany(Recipe, {
+    through: {
+        model: UserRecipe,
+        unique: false,
+    },
+    as: "user_recipes"
+});
