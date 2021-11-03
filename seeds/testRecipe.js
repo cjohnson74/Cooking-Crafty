@@ -1,5 +1,5 @@
-
 const fetch = require('node-fetch');
+const fs = require('fs');
 
 const fillIngredientJson = async => {
 const searchedRecipe = 'egg and cheese';
@@ -36,15 +36,18 @@ const url = `https://api.edamam.com/api/recipes/v2?type=public&q=${properSearchR
                 // prints the recipeArray to the console
                 console.log(recipeArray);
                 // reads the recipeData.json file
-
+                const prevRecipes = fs.readFileSync('./recipeData.json', 'utf8');
+                const currentRecipes = JSON.parse(prevRecipes);
+                var newRecipes = JSON.parse(recipeArray);
+                var finalRecipes = currentRecipes.concat(newRecipes);
                 // writes to the recipeData.json file
-
+                fs.writeFileSync('./recipeData.json')
                 // prints the ingredientsArray to the console
                 console.log(ingredientsArray);
                 // reads to the ingredientData.json file
 
                 //writes to the ingredientsData.json file
-                
+
             });
 }
 
