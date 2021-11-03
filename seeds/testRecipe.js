@@ -37,10 +37,14 @@ const url = `https://api.edamam.com/api/recipes/v2?type=public&q=${properSearchR
                 console.log(recipeArray);
                 // reads the recipeData.json file
 
-                //
+                // writes to the recipeData.json file
+
                 // prints the ingredientsArray to the console
                 console.log(ingredientsArray);
-                // writes to the ingredie
+                // reads to the ingredientData.json file
+
+                //writes to the ingredientsData.json file
+                
             });
 }
 
