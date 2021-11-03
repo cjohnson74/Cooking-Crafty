@@ -1,19 +1,41 @@
-const fetch = require('node-fetch');
 
-function fillIngredientJson() {
-const searchedRecipe = 'egg and cheese';
+// const fetch = require('node-fetch');
 
-const properSearchRecipe = searchedRecipe.replace(/ /g,'%20');
+// function fillIngredientJson() {
+// const searchedRecipe = 'egg and cheese';
+  
+// const properSearchRecipe = searchedRecipe.replace(/ /g,'%20');
 
-const url = `https://api.edamam.com/api/recipes/v2?type=public&q=${properSearchRecipe}&app_id=19224618&app_key=c855fa0b4fff67aaf62cd192e24a652b`;
+// const url = `https://api.edamam.com/api/recipes/v2?type=public&q=${properSearchRecipe}&app_id=19224618&app_key=c855fa0b4fff67aaf62cd192e24a652b`;
 
-    fetch(url)
-        .then(function (response) {
-        return response.json();
-        })
-        .then(function (data) {
-        console.log(data)
-        });
-}
+//     fetch(url)
+//         .then(function (response) {
+//         return response.json();
+//         })
+//         .then(function (data) {
+//         console.log(data)
+//         });
+// }
 
-fillIngredientJson();
+// fillIngredientJson();
+
+require('dotenv').config('../.env');
+const fs = require('fs');
+
+
+const apiUrl = `https://api.edamam.com/api/recipes/v2?type=public`;
+
+apiQuery = (query) => {
+    let apiCall = `${apiUrl}&q=peanut&app_id=19224618&app_key=c855fa0b4fff67aaf62cd192e24a652b`
+
+    fetch(apiCall)
+    .then(function (response) {
+        if(!response.ok) {
+            throw response.json();
+        }
+
+        fs.writeFile('testing.json', response.json());
+    });
+};
+
+apiQuery();
