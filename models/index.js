@@ -52,7 +52,7 @@ Recipe.belongsToMany(Ingredient, {
     as: "recipe_ingredients"
 });
 
-User.blongsToMany(Recipe, {
+User.belongsToMany(Recipe, {
     through: {
         model: UserRecipe,
         unique: false,
@@ -83,3 +83,5 @@ Ingredient.belongsToMany(Recipe, {
     },
     as: "ingredient_recipes"
 });
+
+module.exports = { User, Recipe, Ingredient };
