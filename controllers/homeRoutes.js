@@ -25,9 +25,11 @@ router.get('/', async (req, res) => {
 
 router.get('/login', (req, res) => {
     if (req.session.logged_in) {
-      res.redirect('/profile');
+      res.redirect('/recipes');
       return;
     }
 
     res.render('login');
 });
+
+module.exports = router;
