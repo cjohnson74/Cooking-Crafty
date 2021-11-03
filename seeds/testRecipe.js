@@ -40,8 +40,9 @@ const url = `https://api.edamam.com/api/recipes/v2?type=public&q=${properSearchR
                 const currentRecipes = JSON.parse(prevRecipes);
                 var newRecipes = JSON.parse(recipeArray);
                 var finalRecipes = currentRecipes.concat(newRecipes);
+                JSON.stringify(finalRecipes);
                 // writes to the recipeData.json file
-                fs.writeFileSync('./recipeData.json')
+                fs.writeFileSync('./recipeData.json', finalRecipes);
                 // prints the ingredientsArray to the console
                 console.log(ingredientsArray);
                 // reads to the ingredientData.json file
