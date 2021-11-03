@@ -2,8 +2,7 @@ const User = require('./User');
 const Recipe = require('./Recipe');
 const Ingredient = require('./Ingredient');
 const UserRecipe = require('./UserRecipe');
-const UserIngredient = require('./UserIngredient');
-const RecipeIngredient = require('./RecipeIngredient');
+const RecipeIngredient = require('./RecipeIngredient.js');
 
 User.hasMany(Recipe, {
     foreignKey: 'user_id',
@@ -58,22 +57,6 @@ User.belongsToMany(Recipe, {
         unique: false,
     },
     as: "user_recipes"
-});
-
-User.belongsToMany(Ingredient, {
-    through: {
-        model: UserIngredient,
-        unique: false,
-    },
-    as: "user_ingredient"
-});
-
-Ingredient.belongsToMany(User, {
-    through: {
-        model: UserIngredient,
-        unique: false,
-    },
-    as: "ingredient_users"
 });
 
 Ingredient.belongsToMany(Recipe, {
