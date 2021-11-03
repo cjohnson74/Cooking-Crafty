@@ -1,19 +1,19 @@
+require('dotenv').config('../.env');
+const fs = require('fs');
 
+const apiUrl = `https://api.edamam.com/api/recipes/v2?type=public`;
 
-function fillIngredientJson() {
-const searchedRecipe = 'egg and cheese';
+apiQuery = (query) => {
+    let apiCall = `${apiUrl}&q=peanut&app_id=19224618&app_key=c855fa0b4fff67aaf62cd192e24a652b`
 
-const properSearchRecipe = searchedRecipe.replace(/ /g,'%20');
+    fetch(apiCall)
+    .then(function (response) {
+        if(!response.ok) {
+            throw response.json();
+        }
 
-const url = `https://api.edamam.com/api/recipes/v2?type=public&q=${properSearchRecipe}&app_id=19224618&app_key=c855fa0b4fff67aaf62cd192e24a652b`;
+        fs.writeFile('testing.json', response.json());
+    });
+};
 
-    fetch(url)
-        .then(function (response) {
-        return response.json();
-        })
-        .then(function (data) {
-        console.log(data)
-        });
-}
-
-fillIngredientJson();
+apiQuery();
