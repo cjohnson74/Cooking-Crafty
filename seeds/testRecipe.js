@@ -1,4 +1,4 @@
-
+const fetch = require('node-fetch');
 
 function fillIngredientJson() {
 const searchedRecipe = 'egg and cheese';

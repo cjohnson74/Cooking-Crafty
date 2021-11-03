@@ -34,13 +34,11 @@ Ingredient.hasMany(User, {
     onDelete: 'CASCADE'
 })
 
-
 Recipe.belongsToMany(User, {
     through: {
         model: UserRecipe,
-        unique: false,
     },
-    as: "recipe_users"
+    foreignKey: "user_id"
 });
 
 Recipe.belongsToMany(Ingredient, {
@@ -48,15 +46,14 @@ Recipe.belongsToMany(Ingredient, {
         model: RecipeIngredient,
         unique: false,
     },
-    as: "recipe_ingredients"
+    foreignKey: "ingredient_id"
 });
 
 User.belongsToMany(Recipe, {
     through: {
         model: UserRecipe,
-        unique: false,
     },
-    as: "user_recipes"
+    foreignKey: "recipe_id"
 });
 
 Ingredient.belongsToMany(Recipe, {
@@ -64,7 +61,7 @@ Ingredient.belongsToMany(Recipe, {
         model: RecipeIngredient,
         unique: false,
     },
-    as: "ingredient_recipes"
+    foreignKey: "recipe_id"
 });
 
 module.exports = { User, Recipe, Ingredient };
