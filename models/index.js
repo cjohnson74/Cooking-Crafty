@@ -47,7 +47,7 @@ Recipe.belongsToMany(User, {
 Recipe.belongsToMany(Ingredient, {
     through: {
         model: RecipeIngredient,
-        unqiue: false,
+        unique: false,
     },
     as: "recipe_ingredients"
 });
