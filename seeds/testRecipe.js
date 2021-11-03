@@ -1,5 +1,7 @@
 require('dotenv').config('../.env');
+const fetch = require('node-fetch')
 const fs = require('fs');
+
 
 const apiUrl = `https://api.edamam.com/api/recipes/v2?type=public`;
 
