@@ -84,6 +84,8 @@ const url = `https://api.edamam.com/api/recipes/v2?type=public&q=${properSearchR
                 console.log(JSON.stringify(recipeIngredientArray));
                 // reads the recipeIngredientData.json file
                 const prevRecipeIngredients = fs.readFileSync('./seeds/recipeIngredientData.json', 'utf8');
+                // parsing the read json file into an array
+                const currentRecipeIngredients = JSON.parse(prevRecipeIngredients);
             });
 }
 
