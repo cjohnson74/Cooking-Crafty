@@ -30,7 +30,10 @@ const seedDatabase = async () => {
         returning: true,
     });
 
-    const userRecipes = await UserRecipe.
+    const userRecipes = await UserRecipe.bulkCreate(userRecipeData, {
+        individualHooks: true,
+        returning: true,
+    });
 
     process.exit(0);
 };
