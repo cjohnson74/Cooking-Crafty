@@ -65,17 +65,22 @@ const url = `https://api.edamam.com/api/recipes/v2?type=public&q=${properSearchR
                 });
                 // prints the ingredientsArray to the console
                 // console.log(JSON.stringify(ingredientsArray));
-                // reads to the ingredientData.json file
+                // reads the ingredientData.json file
                 const prevIngredients = fs.readFileSync('./seeds/ingredientData.json', 'utf8');
+                // parsing the read json file into an array
                 const currentIngredients = JSON.parse(prevIngredients);
+                // stringifying then parsing the ingredientsArray into an array
                 var newIngredients = JSON.parse(JSON.stringify(ingredientsArray));
+                // combining the read ingredients with the new ingredients into one array
                 var finalIngredients = currentIngredients.concat(newIngredients);
-                //writes to the ingredientsData.json file
+                //writes the findalIngredients to the ingredientsData.json file
                 fs.writeFileSync('./seeds/ingredientData.json', JSON.stringify(finalIngredients), (err) => {
                     console.log(err);
                 });
-                // prints the recipeIngredeintsArray to the console
+                // prints the recipeIngredientArray to the console
                 console.log(JSON.stringify(recipeIngredientArray));
+                // reads the recipeIngredientData.json file
+                const prevRecipeIngredients = fs.readFileSync('./seeds/recipeIngredientData.json', 'utf8');
             });
 }
 
