@@ -21,4 +21,7 @@ module.exports = {
       console.log(err);
     });
   },
+  resetSeedsJsonFiles: (filename) => {
+    fs.filewrite(`./seeds/${filename}.json`, [])
+  },
 };

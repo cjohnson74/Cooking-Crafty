@@ -7,7 +7,10 @@ var recipeCount = 0;
 var ingredientCount = 0;
 
 // this resets the json files to have empty arrays
-fs.filewrite
+
+fs.filewrite('./seeds/ingredientData.json', []);
+fs.filewrite('./seeds/recipeData.json', []);
+
 
 const fillIngredientJson = async (recipeCount, ingredientCount, recipeToLookup) => {
   // gets the number of recipes created already by reading the userRecipeData.json parsing it to make it an array. Then get its length.
