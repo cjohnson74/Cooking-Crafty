@@ -56,9 +56,12 @@ const url = `https://api.edamam.com/api/recipes/v2?type=public&q=${properSearchR
                 console.log(JSON.stringify(recipeArray));
                 // reads the recipeData.json file
                 const prevRecipes = fs.readFileSync('./seeds/recipeData.json', 'utf8');
+                // parsing the read json file into an array
                 const currentRecipes = JSON.parse(prevRecipes);
-                var newRecipes = JSON.parse(JSON.stringify(recipeArray));
-                var finalRecipes = currentRecipes.concat(newRecipes);
+                // stringifying then parsing the recipeArray into an array
+                // var newRecipes = JSON.parse(JSON.stringify(recipeArray));
+                // combining the read recipes with the new recipes into on array
+                var finalRecipes = currentRecipes.concat(recipeArray);
                 // writes to the recipeData.json file
                 fs.writeFileSync('./seeds/recipeData.json', JSON.stringify(finalRecipes), (err) => {
                     console.log(err);
@@ -70,9 +73,9 @@ const url = `https://api.edamam.com/api/recipes/v2?type=public&q=${properSearchR
                 // parsing the read json file into an array
                 const currentIngredients = JSON.parse(prevIngredients);
                 // stringifying then parsing the ingredientsArray into an array
-                var newIngredients = JSON.parse(JSON.stringify(ingredientsArray));
+                // var newIngredients = JSON.parse(JSON.stringify(ingredientsArray));
                 // combining the read ingredients with the new ingredients into one array
-                var finalIngredients = currentIngredients.concat(newIngredients);
+                var finalIngredients = currentIngredients.concat(ingredientsArray);
                 //writes the findalIngredients to the ingredientsData.json file
                 fs.writeFileSync('./seeds/ingredientData.json', JSON.stringify(finalIngredients), (err) => {
                     console.log(err);
