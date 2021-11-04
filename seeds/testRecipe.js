@@ -53,7 +53,9 @@ const url = `https://api.edamam.com/api/recipes/v2?type=public&q=${properSearchR
                 var newIngredients = JSON.parse(JSON.stringify(ingredientsArray));
                 var finalIngredients = currentIngredients.concat(newIngredients);
                 //writes to the ingredientsData.json file
-                
+                fs.writeFileSync('./seeds/ingredientData.json', JSON.stringify(finalIngredients), (err) => {
+                    console.log(err);
+                });
             });
 }
 
