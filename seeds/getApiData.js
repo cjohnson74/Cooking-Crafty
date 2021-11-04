@@ -6,6 +6,9 @@ const recipesToLookup = require('../seeds/recipeToLookup');
 var recipeCount = 0;
 var ingredientCount = 0;
 
+// this resets the json files to have empty arrays
+fs.filewrite
+
 const fillIngredientJson = async (recipeCount, ingredientCount, recipeToLookup) => {
   // gets the number of recipes created already by reading the userRecipeData.json parsing it to make it an array. Then get its length.
   recipeCount = JSON.parse(fs.readFileSync('./seeds/userRecipeData.json', 'utf8')).length;
@@ -83,4 +86,6 @@ const fillIngredientJson = async (recipeCount, ingredientCount, recipeToLookup) 
     });
 };
 
-fillIngredientJson(recipeCount, ingredientCount);
+for (let i = 0; i < recipesToLookup.length; i++){
+  fillIngredientJson(recipeCount, ingredientCount, recipesToLookup[i]);
+};
