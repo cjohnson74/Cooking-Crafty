@@ -7,10 +7,10 @@ var recipeCount = 0;
 var ingredientCount = 0;
 
 // this resets the json files to have empty arrays
-resetSeedsJSONFiles('ingredientData');
-resetSeedsJSONFiles('recipeData');
-resetSeedsJSONFiles('recipeIngredientData');
-resetSeedsJSONFiles('userRecipeData');
+resetSeedsJSONFiles('./seeds/ingredientData.json');
+resetSeedsJSONFiles('./seeds/recipeData.json');
+resetSeedsJSONFiles('./seeds/recipeIngredientData.json');
+resetSeedsJSONFiles('./seeds/userRecipeData.json');
 
 
 const fillJSONFiles = async (recipeCount, ingredientCount, recipeToLookup) => {
