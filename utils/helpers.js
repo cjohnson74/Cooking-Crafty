@@ -21,8 +21,10 @@ module.exports = {
       console.log(err);
     });
   },
+  // this resets a json file by writing an empty array to it
   resetSeedsJSONFiles: (filename) => {
-    fs.writeFileSync((`./seeds/${filename}.json`).toString, [], (err) => {
+      var path = (`./seeds/${filename}.json`).toString;
+    fs.writeFileSync(path, [], (err) => {
         console.log(err);
     });
   },
