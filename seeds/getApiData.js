@@ -2,14 +2,17 @@ const fetch = require('node-fetch');
 const { writeArrayToJSON } = require('../utils/helpers');
 const fs = require('fs');
 
-// gets the number of recipes created already by reading the userRecipeData.json parsing it to make it an array. Then get its length.
-var recipeCount = JSON.parse(fs.readFileSync('./seeds/userRecipeData.json', 'utf8')).length;
+var recipeCount = 0;
+var ingredientCount = 0;
 
-// gets the number of ingredients created already by reading the recipeIngredientData.json parsing it to make it an array. Then get its length.
-var ingredientCount = JSON.parse(fs.readFileSync('./seeds/recipeIngredientData.json', 'utf8')).length;
+const fillIngredientJson = async (recipeCount, ingredientCount, recipeToLookup) => {
+  // gets the number of recipes created already by reading the userRecipeData.json parsing it to make it an array. Then get its length.
+  recipeCount = JSON.parse(fs.readFileSync('./seeds/userRecipeData.json', 'utf8')).length;
 
-const fillIngredientJson = async (recipeCount, ingredientCount) => {
-  const searchedRecipe = 'pie';
+  // gets the number of ingredients created already by reading the recipeIngredientData.json parsing it to make it an array. Then get its length.
+  ingredientCount = JSON.parse(fs.readFileSync('./seeds/recipeIngredientData.json', 'utf8')).length;
+
+  const searchedRecipe = recipeToLookup;
 
   const properSearchRecipe = searchedRecipe.replace(/ /g, '%20');
 
@@ -63,16 +66,19 @@ const fillIngredientJson = async (recipeCount, ingredientCount) => {
           };
           // adds to the recipeIngredient object to the array
           recipeIngredientArray.push(recipeIngredientObject);
-        };
-      };
+        }
+      }
       // adds the recipeArray to the recipeArray to the recipeData.json
       writeArrayToJSON(recipeArray, './seeds/recipeData.json');
       // adds the ingredientsArray to the ingredientData.json
-      writeArrayToJSON(ingredientsArray, "./seeds/ingredientData.json");
+      writeArrayToJSON(ingredientsArray, './seeds/ingredientData.json');
       // adds the recipeIngredientsArray to recipeIngredientData.json
-      writeArrayToJSON(recipeIngredientArray, "./seeds/recipeIngredientData.json");
+      writeArrayToJSON(
+        recipeIngredientArray,
+        './seeds/recipeIngredientData.json'
+      );
       // adds the userRecipeArray to userRecipeData.json
-      writeArrayToJSON(userRecipeArray, "./seeds/userRecipeData.json");
+      writeArrayToJSON(userRecipeArray, './seeds/userRecipeData.json');
     });
 };
 
