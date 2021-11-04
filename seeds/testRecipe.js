@@ -75,14 +75,16 @@ const fillIngredientJson = async (recipeCount, ingredientCount) => {
           var userRecipeObject = { recipe_id: recipeCount };
           // adds to the userRecipe array
           userRecipeArray.push(userRecipeObject);
-        }
-      }
+        };
+      };
       // adds the recipeArray to the recipeArray to the recipeData.json
       writeToJSON(recipeArray, './seeds/recipeData.json');
       // adds the ingredientsArray to the ingredientData.json
       writeToJSON(ingredientsArray, "./seeds/igredientData.json");
       // adds the recipeIngredientsArray to recipeIngredientData.json
-      writeToJSON(recipeIngredientArray, "./seeds/recipeIngredientData.json")
+      writeToJSON(recipeIngredientArray, "./seeds/recipeIngredientData.json");
+      // adds the userRecipeArray to userRecipeData.json
+      writeToJSON(userRecipeArray, "./seeds/userRecipeData.json");
     });
 };
 
