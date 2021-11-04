@@ -1,6 +1,7 @@
 const fetch = require('node-fetch');
 const fs = require('fs');
 var recipeCount = 360;
+var ingredientCount = 0;
 
 const fillIngredientJson = async (recipeCount) =>  {
 const searchedRecipe = 'pie';
@@ -31,12 +32,16 @@ const url = `https://api.edamam.com/api/recipes/v2?type=public&q=${properSearchR
                     recipeCount++;
 
                     for (let j = 0; j < data.hits[i].recipe.ingredients.length; j++) {
+                        // keeps track of the number of ingredients in json
+                        ingredientCount++;
                         // console.log(data.hits[i].recipe.ingredients);
                         // prints the ingredients to the console
                         console.log(data.hits[i].recipe.ingredients[j].food);
-                        // adds the recipe objects { name: "", recipe_id: i } to the recipe array
+                        // creates the recipe objects { name: "", recipe_id: i } to the recipe array
                         var ingredientObject = { name: data.hits[i].recipe.ingredients[j].food, recipe_id: recipeCount };
+                        // adds to the recipeIngrient object to the array
                         ingredientsArray.push(ingredientObject);
+                        // creates
                     }
                 }
                 // prints the recipeArray to the console
