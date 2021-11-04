@@ -12,13 +12,20 @@ resetSeedsJSONFiles('./seeds/recipeData.json');
 resetSeedsJSONFiles('./seeds/recipeIngredientData.json');
 resetSeedsJSONFiles('./seeds/userRecipeData.json');
 
+recipeCount += JSON.parse(fs.readFileSync('./seeds/userRecipeData.json', 'utf8')).length;
+ingredientCount += JSON.parse(fs.readFileSync('./seeds/recipeIngredientData.json', 'utf8')).length;
+
 
 const fillJSONFiles = async (recipeCount, ingredientCount, recipeToLookup) => {
   // gets the number of recipes created already by reading the userRecipeData.json parsing it to make it an array. Then get its length.
-  recipeCount = JSON.parse(fs.readFileSync('./seeds/userRecipeData.json', 'utf8')).length;
-
+  const readRecipeArray = fs.readFileSync('./seeds/userRecipeData.json', 'utf8');
+  const parsedReadRecipeArray = JSON.parse(readRecipeArray);
+  recipeCount += parsedReadRecipeArray.length;
+  console.log(recipeCount);
   // gets the number of ingredients created already by reading the recipeIngredientData.json parsing it to make it an array. Then get its length.
-  ingredientCount = JSON.parse(fs.readFileSync('./seeds/recipeIngredientData.json', 'utf8')).length;
+  const readIngredientArray = fs.readFileSync('./seeds/recipeIngredientData.json', 'utf8');
+  const parsedReadIngredientArray = JSON.parse(readIngredientArray);
+  ingredientCount += parsedReadIngredientArray.length;
 
   const searchedRecipe = recipeToLookup;
 
@@ -37,9 +44,9 @@ const fillJSONFiles = async (recipeCount, ingredientCount, recipeToLookup) => {
     .then(function (data) {
       for (let i = 0; i < data.hits.length; i++) {
         // prints the recipe name to the console
-        console.log(data.hits[i].recipe.label);
+        // console.log(data.hits[i].recipe.label);
         // prints the recipe url to the console
-        console.log(data.hits[i].recipe.url);
+        // console.log(data.hits[i].recipe.url);
         var recipe = {
           name: data.hits[i].recipe.label,
           description: data.hits[i].recipe.url,
@@ -59,7 +66,7 @@ const fillJSONFiles = async (recipeCount, ingredientCount, recipeToLookup) => {
           ingredientCount++;
           // console.log(data.hits[i].recipe.ingredients);
           // prints the ingredients to the console
-          console.log(data.hits[i].recipe.ingredients[j].food);
+          // console.log(data.hits[i].recipe.ingredients[j].food);
           // creates the recipe object { name: "", recipe_id: i } to the recipe array
           var ingredientObject = {
             name: data.hits[i].recipe.ingredients[j].food,
