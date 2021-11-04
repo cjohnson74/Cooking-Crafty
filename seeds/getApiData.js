@@ -13,7 +13,7 @@ resetSeedsJSONFiles('recipeIngredientData');
 resetSeedsJSONFiles('userRecipeData');
 
 
-const fillIngredientJson = async (recipeCount, ingredientCount, recipeToLookup) => {
+const fillJSONFiles = async (recipeCount, ingredientCount, recipeToLookup) => {
   // gets the number of recipes created already by reading the userRecipeData.json parsing it to make it an array. Then get its length.
   recipeCount = JSON.parse(fs.readFileSync('./seeds/userRecipeData.json', 'utf8')).length;
 
@@ -90,6 +90,7 @@ const fillIngredientJson = async (recipeCount, ingredientCount, recipeToLookup) 
     });
 };
 
+// WARNING This will hit the api how the same amount of times as the length of the recipesToLookup array
 for (let i = 0; i < recipesToLookup.length; i++){
-  fillIngredientJson(recipeCount, ingredientCount, recipesToLookup[i]);
+  fillJSONFiles(recipeCount, ingredientCount, recipesToLookup[i]);
 };
