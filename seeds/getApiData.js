@@ -5,7 +5,8 @@ const fs = require('fs');
 // gets the number of recipes created already by reading the userRecipeData.json parsing it to make it an array. Then get its length.
 var recipeCount = JSON.parse(fs.readFileSync('./seeds/userRecipeData.json', 'utf8')).length;
 
-var ingredientCount = ;
+// gets the number of ingredients created already by reading the recipeIngredientData.json parsing it to make it an array. Then get its length.
+var ingredientCount = JSON.parse(fs.readFileSync('./seeds/recipeIngredientData.json', 'utf8')).length;
 
 const fillIngredientJson = async (recipeCount, ingredientCount) => {
   const searchedRecipe = 'eggs and cheese';
