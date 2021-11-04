@@ -1,6 +1,7 @@
 const fetch = require('node-fetch');
 const { writeArrayToJSON } = require('../utils/helpers');
 const fs = require('fs');
+const recipesToLookup = require('../seeds/recipeToLookup');
 
 var recipeCount = 0;
 var ingredientCount = 0;

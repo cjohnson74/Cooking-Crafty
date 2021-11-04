@@ -1,4 +1,24 @@
-[
+module.exports = [
     "eggs and cheese",
-    
+    "tuna salad",
+    "cookies",
+    "pancakes",
+    "bread",
+    "pasta",
+    "pizza",
+    "tomato sauce",
+    "egg salad",
+    "chicken",
+    "salad",
+    "rice",
+    "burgers",
+    "pesto",
+    "salmon",
+    "steak",
+    "brownies",
+    "bread",
+    "couscous",
+    "muffins",
+    "chicken salad",
+    "pie"
 ]
