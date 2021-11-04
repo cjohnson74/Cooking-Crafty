@@ -1,22 +1,22 @@
 const router = require('express').Router();
-const { Recipe , User } = require('../models');
+const { Recipe , User, Ingredient } = require('../models');
 const withAuth = require('../utils/auth')
 
 router.get('/', async (req, res) => {
     try {
-      const recipesData = await Recipe.findAll({
+      /*const recipesData = await Recipe.findAll({
         include: [
           {
-            model: Recipe,
+            model: Ingredient,
             attributes: ['name'],
           },
         ],
       });
 
-      const recipes = recipesData.map((project) => project.get({ plain: true }));
+      const recipes = recipesData.map((recipe) => recipe.get({ plain: true }));*/
 
       res.render('homepage', {
-        recipes, 
+        //...recipes, 
         logged_in: req.session.logged_in 
       });
     } catch (err) {
@@ -29,7 +29,7 @@ router.get('/recipe/:id', async (req, res) => {
       const recipeData = await Recipe.findByPk(req.params.id, {
         include: [
           {
-            model: Recipe,
+            model: Ingredient,
             attributes: ['name'],
           },
         ],
