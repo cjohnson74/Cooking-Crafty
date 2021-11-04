@@ -1,14 +1,12 @@
 const fetch = require('node-fetch');
 const fs = require('fs');
+var recipeCount = 360;
 
-
-
-const fillIngredientJson = async => {
-const searchedRecipe = 'egg and cheese';
+const fillIngredientJson = async (recipeCount) =>  {
+const searchedRecipe = 'pie';
   
 const properSearchRecipe = searchedRecipe.replace(/ /g,'%20');
 
-var recipeCount;
 const recipeArray = [];
 const ingredientsArray = [];
 
@@ -64,7 +62,7 @@ const url = `https://api.edamam.com/api/recipes/v2?type=public&q=${properSearchR
             });
 }
 
-fillIngredientJson();
+fillIngredientJson(recipeCount);
 
 // require('dotenv').config('../.env');
 // const fetch = require('node-fetch')
