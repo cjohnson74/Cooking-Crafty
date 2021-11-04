@@ -21,14 +21,7 @@ Recipe.init(
         date_created: {
             type: DataTypes.DATE,
             allowNull: false,
-            deafultValue: DataTypes.NOW,
-        },
-        user_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'user',
-                key: 'id',
-            },
+            defaultValue: DataTypes.NOW,
         },
     },
     {
