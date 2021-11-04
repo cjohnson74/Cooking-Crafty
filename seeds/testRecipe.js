@@ -39,10 +39,12 @@ const url = `https://api.edamam.com/api/recipes/v2?type=public&q=${properSearchR
                         console.log(data.hits[i].recipe.ingredients[j].food);
                         // creates the recipe object { name: "", recipe_id: i } to the recipe array
                         var ingredientObject = { name: data.hits[i].recipe.ingredients[j].food, recipe_id: recipeCount };
-                        // adds to the recipeIngrient object to the array
+                        // adds to the Ingrient object to the array
                         ingredientsArray.push(ingredientObject);
                         // creates the recipeIngredient object { recipe_id: recipeCount, ingredient_id: ingredientCount }
                         var recipeIngredientObject = { recipe_id: recipeCount, ingredient_id: ingredientCount };
+                        // adds to the recipeIngredient object to the array
+                        recipeIngredientArray.push(recipeIngredientObject);
                         // creates the userRecipe object { recipe_id: recipeCount }
                         var userRecipeObject = { recipe_id: recipeCount }
                     }
@@ -69,6 +71,7 @@ const url = `https://api.edamam.com/api/recipes/v2?type=public&q=${properSearchR
                 fs.writeFileSync('./seeds/ingredientData.json', JSON.stringify(finalIngredients), (err) => {
                     console.log(err);
                 });
+                // prints the recipeIngredeintsArray to the console
             });
 }
 
