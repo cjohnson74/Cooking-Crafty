@@ -1,9 +1,11 @@
 const sequelize = require('../config/connection');
-const { User, Recipe, Ingredient } = require('../models');
+const { User, Recipe, Ingredient, RecipeIngredient, UserRecipe } = require('../models');
 
 const userData = require('./userData.json')
 const recipeData = require('./recipeData.json');
 const ingredientData = require('./ingredientData.json');
+const RecipeIngredientData = require('./recipeIngredientData.json');
+const userRecipeData = require('./userRecipeData.json')
 
 const seedDatabase = async () => {
     await sequelize.sync({ force: true });
@@ -13,12 +15,29 @@ const seedDatabase = async () => {
         returning: true,
     });
 
-    for (const recipe of recipeData) {
-        await Recipe.create({
-            ...recipe,
-            user_id: users[Math.floor(Math.random() * users.length)].id,
+    const recipes = await Recipe.bulkCreate(recipeData, {
+            individualHooks: true,
+            returning: true,
+    });
+
+    const ingredients = await Ingredient.bulkCreate(ingredientData, {
+        individualHooks: true,
+        returning: true,
+    });
+
+    const recipeIngredients = await RecipeIngredient.bulkCreate(RecipeIngredientData, {
+        individualHooks: true,
+        returning: true,
+    });
+
+    for (const userRecipe of userRecipeData) {
+        await userRecipe.create({
+            ...userRecipe,
+            user_id: users[Math.floor(Math.random() * users.length)].isSoftDeleted,
         });
-    }
+    };
 
     process.exit(0);
 };
+
+seedDatabase();
