@@ -17,6 +17,7 @@ CREATE TABLE recipe (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     description VARCHAR(255),
+	image VARCHAR(255),
     date_created DATETIME NOT NULL
 );
 
