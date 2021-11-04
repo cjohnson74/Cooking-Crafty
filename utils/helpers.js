@@ -22,7 +22,7 @@ module.exports = {
     });
   },
   resetSeedsJSONFiles: (filename) => {
-    fs.writeFileSync(`./seeds/${filename}.json`, [], (err) => {
+    fs.writeFileSync((`./seeds/${filename}.json`).toString, [], (err) => {
         console.log(err);
     });
   },
