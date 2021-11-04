@@ -3,6 +3,23 @@ const fs = require('fs');
 var recipeCount = 360;
 var ingredientCount = 0;
 
+const writeToJSON = (array, jsonFile) => {
+    // prints the ingredientsArray to the console
+                // console.log(JSON.stringify(array));
+                // reads the ingredientData.json file
+                const readData = fs.readFileSync(`./seeds/${jsonFile}`, 'utf8');
+                // parsing the read json file into an array
+                const currentData = JSON.parse(readData);
+                // stringifying then parsing the ingredientsArray into an array
+                // var newArray = JSON.parse(JSON.stringify(array));
+                // combining the read ingredients with the new ingredients into one array
+                var finalDataArray = currentData.concat(array);
+                // writes the finalDataArray to the jsonFile
+                fs.writeFileSync(`./seeds/${jsonFile}`, JSON.stringify(finalDataArray), (err) => {
+                    console.log(err);
+                });
+}
+
 const fillIngredientJson = async (recipeCount) =>  {
 const searchedRecipe = 'pie';
   
@@ -12,7 +29,6 @@ const recipeArray = [];
 const ingredientsArray = [];
 const recipeIngredientArray = [];
 const userRecipeArray = [];
-
 
 const url = `https://api.edamam.com/api/recipes/v2?type=public&q=${properSearchRecipe}&app_id=19224618&app_key=c855fa0b4fff67aaf62cd192e24a652b`;
         fetch(url)
