@@ -37,11 +37,12 @@ const url = `https://api.edamam.com/api/recipes/v2?type=public&q=${properSearchR
                         // console.log(data.hits[i].recipe.ingredients);
                         // prints the ingredients to the console
                         console.log(data.hits[i].recipe.ingredients[j].food);
-                        // creates the recipe objects { name: "", recipe_id: i } to the recipe array
+                        // creates the recipe object { name: "", recipe_id: i } to the recipe array
                         var ingredientObject = { name: data.hits[i].recipe.ingredients[j].food, recipe_id: recipeCount };
                         // adds to the recipeIngrient object to the array
                         ingredientsArray.push(ingredientObject);
-                        // creates
+                        // creates the recipeIngredient object { recipe_id: recipeCount, ingredient_id: ingredientCount }
+                        var recipeIngredientObject = { recipe_id: recipeCount, ingredient_id: ingredientCount };
                     }
                 }
                 // prints the recipeArray to the console
