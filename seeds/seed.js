@@ -18,7 +18,14 @@ const seedDatabase = async () => {
             ...recipe,
             user_id: users[Math.floor(Math.random() * users.length)].id,
         });
-    }
+    };
+
+    const ingredients = await Ingredient.bulkCreate(ingredientData, {
+        individualHooks: true,
+        returning: true,
+    });
 
     process.exit(0);
 };
+
+seedDatabase();
