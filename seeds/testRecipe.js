@@ -75,6 +75,7 @@ const url = `https://api.edamam.com/api/recipes/v2?type=public&q=${properSearchR
                     console.log(err);
                 });
                 // prints the recipeIngredeintsArray to the console
+                console.log(JSON.stringify(recipeIngredientArray));
             });
 }
 
