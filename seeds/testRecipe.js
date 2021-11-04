@@ -23,28 +23,30 @@ const url = `https://api.edamam.com/api/recipes/v2?type=public&q=${properSearchR
                     console.log(data.hits[i].recipe.url);
                     var recipe = { name: data.hits[i].recipe.label, description: data.hits[i].recipe.url }
                     // adds the recipe objects { name: "", url: "" } to the recipe array
-                    recipeArray[i] = JSON.stringify(recipe);
+                    recipeArray[i] = recipe;
 
                     for (let j = 0; j < data.hits[i].recipe.ingredients.length; j++) {
                         // console.log(data.hits[i].recipe.ingredients);
                         // prints the ingredients to the console
                         console.log(data.hits[i].recipe.ingredients[j].food);
                         // adds the recipe objects { name: "", recipe_id: i } to the recipe array
-                        ingredientsArray.push(JSON.stringify({ name: data.hits[i].recipe.ingredients[j].food, recipe_id: i}));
+                        var ingredientObject = { name: data.hits[i].recipe.ingredients[j].food, recipe_id: i };
+                        ingredientsArray.push(JSON.stringify(ingredientObject));
                     }
                 }
                 // prints the recipeArray to the console
-                console.log(recipeArray);
+                console.log(JSON.stringify(recipeArray));
                 // reads the recipeData.json file
-                const prevRecipes = fs.readFileSync('./recipeData.json', 'utf8');
+                const prevRecipes = fs.readFileSync('./seeds/recipeData.json', 'utf8');
                 const currentRecipes = JSON.parse(prevRecipes);
-                var newRecipes = JSON.parse(recipeArray);
+                var newRecipes = JSON.parse(JSON.stringify(recipeArray));
                 var finalRecipes = currentRecipes.concat(newRecipes);
-                JSON.stringify(finalRecipes);
                 // writes to the recipeData.json file
-                fs.writeFileSync('./recipeData.json', finalRecipes);
+                fs.writeFileSync('./seeds/recipeData.json', JSON.stringify(finalRecipes), (err) => {
+                    console.log(err);
+                });
                 // prints the ingredientsArray to the console
-                console.log(ingredientsArray);
+                // console.log(ingredientsArray);
                 // reads to the ingredientData.json file
 
                 //writes to the ingredientsData.json file
