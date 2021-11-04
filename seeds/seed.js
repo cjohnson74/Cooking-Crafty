@@ -30,10 +30,12 @@ const seedDatabase = async () => {
         returning: true,
     });
 
-    const userRecipes = await UserRecipe.bulkCreate(userRecipeData, {
-        individualHooks: true,
-        returning: true,
-    });
+    for (const userRecipe of userRecipeData) {
+        await userRecipe.create({
+            ...userRecipe,
+            user_id: users[Math.floor(Math.random() * users.length)].isSoftDeleted,
+        });
+    };
 
     process.exit(0);
 };
