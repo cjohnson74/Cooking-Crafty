@@ -27,13 +27,6 @@ User.init(
                 isEmail: true,
             },
         },
-        recipe_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'recipe',
-                key: 'id',
-            },
-        },
         password: {
             type: DataTypes.STRING,
             allowNull: false,

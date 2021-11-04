@@ -17,10 +17,7 @@ CREATE TABLE recipe (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     description VARCHAR(255),
-    date_created DATETIME NOT NULL,
-    user_id INT,
-    FOREIGN KEY (user_id)
-    REFERENCES User(id)
+    date_created DATETIME NOT NULL
 );
 
 DROP TABLE IF EXISTS user_recipe;
@@ -37,7 +34,7 @@ CREATE TABLE user_recipe (
 DROP TABLE IF EXISTS ingredient;
 CREATE TABLE ingredient (
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	name VARCHAR(255) NOT NULL PRIMARY KEY
+	name VARCHAR(255) NOT NULL
 );
 
 DROP TABLE IF EXISTS recipe_ingredient;
@@ -46,9 +43,9 @@ CREATE TABLE recipe_ingredient (
 	recipe_id INT NOT NULL,
 	FOREIGN KEY (recipe_id)
 	REFERENCES recipe(id),
-	ingredient_name VARCHAR(255) NOT NULL,
-	FOREIGN KEY (ingredient_name)
-	REFERENCES ingredient(name)
+	ingredient_id INT NOT NULL,
+	FOREIGN KEY (ingredient_id)
+	REFERENCES ingredient(id)
 );
 
 -- DROP TABLE IF EXISTS user_ingredient;
