@@ -9,7 +9,7 @@ var recipeCount = JSON.parse(fs.readFileSync('./seeds/userRecipeData.json', 'utf
 var ingredientCount = JSON.parse(fs.readFileSync('./seeds/recipeIngredientData.json', 'utf8')).length;
 
 const fillIngredientJson = async (recipeCount, ingredientCount) => {
-  const searchedRecipe = 'eggs and cheese';
+  const searchedRecipe = 'pie';
 
   const properSearchRecipe = searchedRecipe.replace(/ /g, '%20');
 
