@@ -1,12 +1,11 @@
 const fetch = require('node-fetch');
-const fs = require('fs');
 const { writeArrayToJSON } = require('../utils/helpers');
 
-var recipeCount = 360;
+var recipeCount = 0;
 var ingredientCount = 0;
 
 const fillIngredientJson = async (recipeCount, ingredientCount) => {
-  const searchedRecipe = 'pie';
+  const searchedRecipe = 'eggs and cheese';
 
   const properSearchRecipe = searchedRecipe.replace(/ /g, '%20');
 
@@ -34,6 +33,10 @@ const fillIngredientJson = async (recipeCount, ingredientCount) => {
         recipeArray[i] = recipe;
         // keeps track of the number of recipes in json
         recipeCount++;
+        // creates the userRecipe object { recipe_id: recipeCount }
+        var userRecipeObject = { recipe_id: recipeCount };
+        // adds to the userRecipe array
+        userRecipeArray.push(userRecipeObject);
 
         for (let j = 0; j < data.hits[i].recipe.ingredients.length; j++) {
           // keeps track of the number of ingredients in json
@@ -55,16 +58,12 @@ const fillIngredientJson = async (recipeCount, ingredientCount) => {
           };
           // adds to the recipeIngredient object to the array
           recipeIngredientArray.push(recipeIngredientObject);
-          // creates the userRecipe object { recipe_id: recipeCount }
-          var userRecipeObject = { recipe_id: recipeCount };
-          // adds to the userRecipe array
-          userRecipeArray.push(userRecipeObject);
         };
       };
       // adds the recipeArray to the recipeArray to the recipeData.json
       writeArrayToJSON(recipeArray, './seeds/recipeData.json');
       // adds the ingredientsArray to the ingredientData.json
-      writeArrayToJSON(ingredientsArray, "./seeds/igredientData.json");
+      writeArrayToJSON(ingredientsArray, "./seeds/ingredientData.json");
       // adds the recipeIngredientsArray to recipeIngredientData.json
       writeArrayToJSON(recipeIngredientArray, "./seeds/recipeIngredientData.json");
       // adds the userRecipeArray to userRecipeData.json
