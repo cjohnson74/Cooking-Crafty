@@ -77,6 +77,8 @@ const fillIngredientJson = async (recipeCount, ingredientCount) => {
           userRecipeArray.push(userRecipeObject);
         }
       }
+      // adds the recipeArray to the recipeArray to the recipeData.json
+      w
       // prints the recipeArray to the console
       console.log(JSON.stringify(recipeArray));
       // reads the recipeData.json file
@@ -95,29 +97,10 @@ const fillIngredientJson = async (recipeCount, ingredientCount) => {
           console.log(err);
         }
       );
-      // prints the ingredientsArray to the console
-      // console.log(JSON.stringify(ingredientsArray));
-      // reads the ingredientData.json file
-      const prevIngredients = fs.readFileSync(
-        './seeds/ingredientData.json',
-        'utf8'
-      );
-      // parsing the read json file into an array
-      const currentIngredients = JSON.parse(prevIngredients);
-      // stringifying then parsing the ingredientsArray into an array
-      // var newIngredients = JSON.parse(JSON.stringify(ingredientsArray));
-      // combining the read ingredients with the new ingredients into one array
-      var finalIngredients = currentIngredients.concat(ingredientsArray);
-      // writes the findalIngredients to the ingredientsData.json file
-      fs.writeFileSync(
-        './seeds/ingredientData.json',
-        JSON.stringify(finalIngredients),
-        (err) => {
-          console.log(err);
-        }
-      );
-      // adds the recipeIngredientsArray to recipeIngredient.json
-      writeToJSON(recipeIngredientArray, "./seeds/recipeIngredient.json")
+      // adds the ingredientsArray to the ingredientData.json
+      writeToJSON(ingredientsArray, "./seeds/igredientData.json");
+      // adds the recipeIngredientsArray to recipeIngredientData.json
+      writeToJSON(recipeIngredientArray, "./seeds/recipeIngredientData.json")
     });
 };
 
