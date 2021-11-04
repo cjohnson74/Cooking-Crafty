@@ -1,5 +1,5 @@
 const fetch = require('node-fetch');
-const { writeArrayToJSON } = require('../utils/helpers');
+const { writeArrayToJSON, resetSeedsJSONFiles } = require('../utils/helpers');
 const fs = require('fs');
 const recipesToLookup = require('../seeds/recipeToLookup');
 
@@ -7,9 +7,10 @@ var recipeCount = 0;
 var ingredientCount = 0;
 
 // this resets the json files to have empty arrays
-
-fs.filewrite('./seeds/ingredientData.json', []);
-fs.filewrite('./seeds/recipeData.json', []);
+resetSeedsJSONFiles('ingredientData');
+resetSeedsJSONFiles('recipeData');
+resetSeedsJSONFiles('recipeIngredientData');
+resetSeedsJSONFiles('userRecipeData');
 
 
 const fillIngredientJson = async (recipeCount, ingredientCount, recipeToLookup) => {
