@@ -1,43 +1,49 @@
 <div class="hero is-fullheight">
   <div class="hero-body">
-     <div class="container has-text-centered">
-       <div class="column is-two-fifths is-offset-one-quarter box">
-      <h1 class="has-text-weight-bold is-size-3">Login</h1>
-    <div class="field">
-    <p class="control has-icons-left">
-    <input class="input" type="email" placeholder="Email">
-    <span class="icon is-small is-left">
-      <i class="fas fa-envelope"></i>
-    </span>
-    </p>
-    <div class="field">
-  <p class="control has-icons-left">
-    <input class="input" type="password" placeholder="Password">
-    <span class="icon is-small is-left">
-      <i class="fas fa-lock"></i>
-    </span>
-  </p>
-</div>
-<div class="field">
-    <button class="button is-success">
-      Login
-    </button>
-</div>
-</div>
-    <h1 class="has-text-weight-bold is-size-3">Sign up</h1>
+    <div class="container has-text-centered">
+      <div class="column is-two-fifths is-offset-one-quarter box">
+        <h1 class="has-text-weight-bold is-size-3">Login</h1>
+        <form class="login-form">
+          <div class="field">
+            <p class="control has-icons-left">
+              <input id="email-login" class="input" type="email" placeholder="Email">
+              <span class="icon is-small is-left">
+                <i class="fas fa-envelope"></i>
+              </span>
+            </p>
+          </div>
+          <div class="field">
+            <p class="control has-icons-left">
+              <input id="password-login" class="input" type="password" placeholder="Password">
+              <span class="icon is-small is-left">
+                <i class="fas fa-lock"></i>
+              </span>
+            </p>
+          </div>
+          <div class="field">
+            <button class="button is-success" type="submit">
+              Login
+            </button>
+          </div>
+        </form>
 
-      <div class="form">
-        <input class="input" type="text" placeholder="Name" />
+        <h1 class="has-text-weight-bold is-size-3">Sign up</h1>
+        <form class=" signup-form">
+          <div class="form">
+            <input id="name-signup" class="input" type="text" placeholder="Name" />
+          </div>
+          <div class="form">
+            <input id="email-signup" class="input" type="email" placeholder="Email" />
+          </div>
+          <div class="form">
+            <input id="password-signup" class="input" type="password" placeholder="Password" />
+          </div>
+          <div class="form">
+            <button class="button is-success" type="submit">Sign up</button>
+          </div>
+        </form>
       </div>
-      <div class="form">
-        <input class="input" type="email" placeholder="Email" />
-      </div>
-      <div class="form">
-        <input class="input" type="password" placeholder="Password" />
-      </div>
-      <div class="form">
-        <button class="button is-success" type="submit">Sign up</button>
-      </div>
+    </div>
   </div>
 </div>
 
