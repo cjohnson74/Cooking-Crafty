@@ -1,43 +1,41 @@
 const sequelize = require('../config/connection');
-const { User, Recipe, Ingredient, RecipeIngredient, UserRecipe } = require('../models');
+const {
+  Ingredient,
+  RecipeIngredient,
+  Recipe
+} = require('../models');
 
-const userData = require('./userData.json')
-const recipeData = require('./recipeData.json');
 const ingredientData = require('./ingredientData.json');
-const RecipeIngredientData = require('./recipeIngredientData.json');
-const userRecipeData = require('./userRecipeData.json')
+const recipeIngredientData = require('./recipeIngredientData.json');
+const recipeData = require('./recipeData.json')
 
-const seedDatabase = async () => {
-    await sequelize.sync({ force: true });
+const seed = async () => {
+  await sequelize.sync({ force: true });
 
-    const users = await User.bulkCreate(userData, {
-        individualHooks: true,
-        returning: true,
-    });
+  //   const userRecipes = await UserRecipe.bulkCreate(userRecipeData, {
+  //     individualHooks: true,
+  //     returning: true,
+  //   });
 
-    const recipes = await Recipe.bulkCreate(recipeData, {
-            individualHooks: true,
-            returning: true,
-    });
+  const recipes = await Recipe.bulkCreate(recipeData, {
+    individualHooks: true,
+    returning: true,
+  });
 
-    const ingredients = await Ingredient.bulkCreate(ingredientData, {
-        individualHooks: true,
-        returning: true,
-    });
+  const ingredients = await Ingredient.bulkCreate(ingredientData, {
+    individualHooks: true,
+    returning: true,
+  });
 
-    const recipeIngredients = await RecipeIngredient.bulkCreate(RecipeIngredientData, {
-        individualHooks: true,
-        returning: true,
-    });
+  const recipeIngredients = await RecipeIngredient.bulkCreate(
+    recipeIngredientData,
+    {
+      individualHooks: true,
+      returning: true,
+    }
+  );
 
-    for (const userRecipe of userRecipeData) {
-        await UserRecipe.create({
-            ...userRecipe,
-            user_id: users[Math.floor(Math.random() * users.length)].id,
-        });
-    };
-
-    process.exit(0);
+  process.exit(0);
 };
 
-seedDatabase();
+seed();
