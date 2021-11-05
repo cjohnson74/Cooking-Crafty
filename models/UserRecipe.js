@@ -16,7 +16,7 @@ UserRecipe.init(
             references: {
                 model: 'recipe',
                 key: 'id',
-            }
+            },
         },
         user_id: {
             type: DataTypes.INTEGER,

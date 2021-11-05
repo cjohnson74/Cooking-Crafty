@@ -4,9 +4,13 @@ const Ingredient = require('./Ingredient');
 const UserRecipe = require('./UserRecipe');
 const RecipeIngredient = require('./RecipeIngredient.js');
 
-User.hasMany(Recipe);
+// User.hasMany(Recipe);
 
-Recipe.hasMany(Ingredient);
+// User.hasMany(UserRecipe);
+
+// Recipe.hasMany(UserRecipe);
+
+// Recipe.hasMany(Ingredient);
 
 Recipe.belongsToMany(User, {
     through: {
