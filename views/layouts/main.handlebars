@@ -11,7 +11,7 @@
 <body>
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item">
+      <a class="navbar-item" href="/">
         <strong>Cooking Crafty</strong>
       </a>
           
@@ -24,15 +24,11 @@
           
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
-        <a class="navbar-item">
-          Home
-        </a>
-          
-        <a class="navbar-item">
+        <a class="navbar-item" href="/api/search">
           Find Recipes
         </a>
 
-        <a class="navbar-item">
+        <a class="navbar-item" href="/saved">
           Your Saved Recipes
         </a>
 
@@ -47,13 +43,13 @@
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
-            <a class="button is-primary">
-              <strong>Sign up</strong>
+            {{#if logged_in}}
+            <button class="button is-primary" id="logout">Logout</button>
+            {{else}}
+            <a class="button is-primary" href="/login">
+              <strong>Login/Sign up</strong>
             </a>
-
-            <a class="button is-light">
-              Log in
-            </a>
+            {{/if}}
           </div>
         </div>
       </div>
