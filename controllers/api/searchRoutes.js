@@ -1,9 +1,9 @@
 const router = require('express').Router();
-const { Recipe, Ingredient } = require('../../models');
+const { Recipe, User, Ingredient } = require('../../models');
 
 router.get('/', async (req, res) => {
     try {
-      const recipesData = await Recipe.findAll({
+      /*const recipesData = await Recipe.findAll({
         include: [
           {
             model: Ingredient,
@@ -12,10 +12,10 @@ router.get('/', async (req, res) => {
         ],
       });
 
-      const recipes = recipesData.map((recipe) => recipe.get({ plain: true }));
+      const recipes = recipesData.map((recipe) => recipe.get({ plain: true }));*/
 
       res.render('search', {
-        recipes, 
+        //recipes, 
         logged_in: req.session.logged_in 
       });
     } catch (err) {
