@@ -31,9 +31,9 @@ const seedDatabase = async () => {
     });
 
     for (const userRecipe of userRecipeData) {
-        await userRecipe.create({
+        await UserRecipe.create({
             ...userRecipe,
-            user_id: users[Math.floor(Math.random() * users.length)].isSoftDeleted,
+            user_id: users[Math.floor(Math.random() * users.length)].id,
         });
     };
 
