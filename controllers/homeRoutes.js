@@ -4,17 +4,21 @@ const withAuth = require('../utils/auth')
 
 router.get('/', async (req, res) => {
     try {
-      const recipesData = await Recipe.findAll({
+      const recipesData = await Recipe.findAll();
+      
+      const ingredientsData = await Ingredient.findAll({
         include: [
           {
-            model: Ingredient,
+            model: Recipe,
             attributes: ['name'],
-          },
-        ],
-      });
+          }
+        ]
+      })
 
+      const ingredients = ingredientsData.map((ingredient) => ingredient.get({ plain: true }));
       const recipes = recipesData.map((recipe) => recipe.get({ plain: true }));
-
+      console.log(ingredients);
+      console.log(recipes);
       res.render('homepage', {
         recipes, 
         logged_in: req.session.logged_in 
