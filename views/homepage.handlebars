@@ -1,44 +1,24 @@
 <body>
-<section class="columns is-centered is-variable is-3">
-    <div class="box">
-        <h1 class="is-size-1 has-text-centered has-text-weight-bold">Welcome to Cooking Crafty! </h1>
-        <h1 class="is-size-2 has-text-centered">Here are this week's Featured Recipes! </h1>
+  <section class='columns is-centered is-variable is-3'>
+    <div class='box'>
+      <h1 class='is-size-1 has-text-centered has-text-weight-bold'>Welcome to
+        Cooking Crafty!
+      </h1>
+      <h1 class='is-size-2 has-text-centered'>Here are this week's Featured
+        Recipes!
+      </h1>
     </div>
-    </section>
-    <section class="columns is-multiline is-flex is-flex-wrap-wrap">
-      <div class="column is-half">
-        <h1 class="box is-size-3 has-text-centered">Placeholder for images</h1>
+  </section>
+  <section class='columns is-multiline is-flex is-flex-wrap-wrap'>
+{{#each recipes as |recipe|}}
+    <div class='column is-half'>
+      <img src="{{recipe.image}}" alt="image of {{recipe.name}}">
     </div>
-        <div class="column is-half box has-text-centered">
-            <h1 class="is-size-2 has-text-centered">Apple Apricot Pie!!</h1>
-            <h2 class="has-text-centered">Ingredients: Apple, apricot, pie</h2>
-            <h3>This pie is simply made. Simply take apples, apricots, and a pie and mix together!</h3>
-            <button class="button is-small is-fullwidth">Click here to read more!</button>
-        </div>
-
-        <div class="column is-half">
-            <h1 class="box is-size-3 has-text-centered">Placeholder for images</h1>
-        </div>
-            <div class="column is-half box has-text-centered">
-                <h1 class="is-size-2 has-text-centered">Apple Apricot Pie!!</h1>
-                <h2 class="has-text-centered">Ingredients: Apple, apricot, pie</h2>
-                <h3>This pie is simply made. Simply take apples, apricots, and a pie and mix together!</h3>
-                <button class="button is-small is-fullwidth">Click here to read more!</button>
-            </div>
-
-            <div class="column is-half">
-                <h1 class="box is-size-3 has-text-centered">Placeholder for images</h1>
-            </div>
-                <div class="column is-half box">
-                    <h1 class="is-size-2 has-text-centered">Apple Apricot Pie!!</h1>
-                    <h2 class="has-text-centered">Ingredients: Apple, apricot, pie</h2>
-                    <h3>This pie is simply made. Simply take apples, apricots, and a pie and mix together!</h3>
-                    <button class="button is-small is-fullwidth">Click here to read more!</button>
-                </div>
-
-</section>
-
-   
-
+    <div class='column is-half box has-text-centered'>
+      <h1 class='is-size-2 has-text-centered'>{{recipe.name}}</h1>
+      <h2 class='has-text-centered'>Ingredients: {{Ingredients.name}}</h2>
+      <a href='{{recipe.description}}'><button class='button is-small is-fullwidth'>Click here to read more!</button></a>
+    </div>
+{{/each}}
+  </section>
 </body>
-</html>
