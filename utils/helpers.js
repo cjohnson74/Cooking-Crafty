@@ -1,4 +1,3 @@
-const fs = require('fs');
 module.exports = {
   format_date: (date) => {
     // Format date as MM/DD/YYYY
@@ -26,5 +25,5 @@ module.exports = {
     fs.writeFileSync(jsonFilePath, JSON.stringify([]), (err) => {
         console.log(err);
     });
-  },
+  }
 };
