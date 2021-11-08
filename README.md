@@ -21,4 +21,5 @@ An example will be provided here.
 
 # The CSS Framework
 
+![alt text](https://bulma.io/images/bulma-banner.png)
 The Framework we used is Bulma. It is a very efficient CSS toolkit that helps us with our placeholders.
