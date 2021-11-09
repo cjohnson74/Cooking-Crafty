@@ -16,8 +16,8 @@
     </div>
     <div class='column is-half box has-text-centered'>
       <h1 class='is-size-2 has-text-centered'>{{recipe.name}}</h1>
-      <h2 class='has-text-centered'>Ingredients: {{Ingredients.name}}</h2>
       <a href='{{recipe.description}}'><button class='button is-small is-fullwidth'>Click here to read more!</button></a>
+      <button id='{{recipe.id}}' class='button is-small is-fullwidth'>Add to Saved Recipes +</button>
     </div>
 {{/each}}
   </section>
