@@ -1,4 +1,4 @@
-<body>
+{{!-- <body>
   <section class='columns is-centered is-variable is-3'>
     <div class='box'>
       <h1 class='is-size-1 has-text-centered has-text-weight-bold'>Welcome to
@@ -21,4 +21,35 @@
     </div>
 {{/each}}
   </section>
-</body>
+</body> --}}
+
+    <div class="container">
+      <div class="section">
+        <div class="columns">
+          <div class="column has-text-centered">
+            <h1 class="title" style="color: black;">Cooking Crafty</h1>
+            <h2 class="title" style="color: black;">Here are this week's featured recipes</h2><br>
+          </div>
+        </div>
+        <div class="row columns is-multiline is-centered">
+          <div class="column is-half">
+            <div class="card large is-horizontal">
+              {{#each recipes as |recipe|}}
+              <div class="card-image">
+                <figure class="image is-16by9">
+                  <img :src="{{recipe.image}}" alt="{{recipe.name}}">
+                </figure>
+              </div>
+              <div class="card-content">
+                <div class="content">
+                        <h1 class='is-size-3 has-text-centered'>{{recipe.name}}</h1>
+                        <a href='{{recipe.description}}'><button class='button is-small is-fullwidth'>Click here to read more!</button></a>
+                        <button id='{{recipe.id}}' class='button is-small is-fullwidth'>Add to Saved Recipes +</button><br>
+                </div>
+                {{/each}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
