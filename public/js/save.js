@@ -1,9 +1,18 @@
-const addToUserSavedRecipes = async (event) => {
+const addSavedRecipe = async (event) => {
     event.preventDefault();
-    console.log("I have been clicked")
-}
+    var recipe_id = event.target.dataset.id;
+    
+    await fetch('/api/users/addsavedrecipe/' + recipe_id, {
+        method: 'POST',
+        headers: { 
+            'Content-Type': 
+            'application/json', 
+        },
+    })
+};
 
-
-document
-    .querySelectorAll("saverecipe")
-    .addEventListener("click", addToUserSavedRecipes)
+var saveButton = document.querySelectorAll(".saverecipe");
+console.log(saveButton);
+saveButton.forEach((button) => {
+    button.addEventListener("click", addSavedRecipe);
+});
