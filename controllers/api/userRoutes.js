@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, UserRecipe } = require('../../models');
 
 router.post('/', async (req, res) => {
   try {
@@ -16,11 +16,18 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.post('/addsavedrecipe/:id', (req, res) => {
-  console.log(req.params.id);
-  console.log(req.session.user_id);
-  
-})
+router.post('/addsavedrecipe/:recipe_id', async (req, res) => {
+  // console.log(req.params.recipe_id);
+  // console.log(req.session.user_id);
+  UserRecipe.create({
+    recipe_id: req.params.recipe_id,
+    user_id: req.session.user_id,
+  })
+  .then((userRecipe) => res.status(200).json(userRecipe))
+  .catch((err) => {
+    res.status(500).json(err);
+  });
+});
 
 router.post('/login', async (req, res) => {
   try {
