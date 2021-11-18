@@ -5,7 +5,6 @@ const withAuth = require('../utils/auth');
 router.get('/', async (req, res) => {
   try {
     const recipesData = await Recipe.findAll({
-      limit: 10,
       include: [
         {
           model: Ingredient,
