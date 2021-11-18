@@ -57,7 +57,7 @@ router.get('/saved', withAuth, async (req, res) => {
     });
 
     const user = userData.get({ plain: true });
-    console.log(userData);
+    console.log(user);
     res.render('savedrecipes', {
       ...user,
       logged_in: true,

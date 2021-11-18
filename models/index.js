@@ -16,14 +16,14 @@ Recipe.belongsToMany(User, {
     through: {
         model: UserRecipe,
     },
-    foreignKey: "user_id"
+    foreignKey: "recipe_id"
 });
 
 User.belongsToMany(Recipe, {
     through: {
         model: UserRecipe,
     },
-    foreignKey: "recipe_id"
+    foreignKey: "user_id"
 });
 
 Recipe.belongsToMany(Ingredient, {
