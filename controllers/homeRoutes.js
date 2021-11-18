@@ -5,7 +5,6 @@ const withAuth = require('../utils/auth');
 router.get('/', async (req, res) => {
   try {
     const recipesData = await Recipe.findAll({
-      limit: 10,
       include: [
         {
           model: Ingredient,
@@ -55,9 +54,7 @@ router.get('/saved', withAuth, async (req, res) => {
       attributes: { exclude: ['password'] },
       include: [{ model: Recipe }],
     });
-
     const user = userData.get({ plain: true });
-    console.log(userData);
     res.render('savedrecipes', {
       ...user,
       logged_in: true,
