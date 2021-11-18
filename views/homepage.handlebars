@@ -37,7 +37,7 @@
               {{#each recipes as |recipe|}}
               <div class="card-image">
                 <figure class="image is-16by9">
-                  <img :src="{{recipe.image}}" alt="{{recipe.name}}">
+                  <img src="{{recipe.image}}" alt="{{recipe.name}}">
                 </figure>
               </div>
               <div class="card-content">
@@ -46,8 +46,8 @@
                         <a href='{{recipe.description}}'><button class='button is-small is-fullwidth'>Click here to read more!</button></a>
                         <button data-id='{{recipe.id}}' class='button is-small is-fullwidth saverecipe'>Add to Saved Recipes +</button><br>
                 </div>
-                {{/each}}
               </div>
+              {{/each}}
             </div>
           </div>
         </div>

@@ -55,13 +55,12 @@ router.get('/saved', withAuth, async (req, res) => {
       attributes: { exclude: ['password'] },
       include: [{ model: Recipe }],
     });
-
     const user = userData.get({ plain: true });
-    console.log(user);
-    res.render('savedrecipes', {
-      ...user,
-      logged_in: true,
-    });
+    res.json(user);
+    // res.render('savedrecipes', {
+    //   ...user,
+    //   logged_in: true,
+    // });
   } catch (err) {
     res.status(500).json(err);
   }
