@@ -55,11 +55,10 @@ router.get('/saved', withAuth, async (req, res) => {
       include: [{ model: Recipe }],
     });
     const user = userData.get({ plain: true });
-    res.json(user);
-    // res.render('savedrecipes', {
-    //   ...user,
-    //   logged_in: true,
-    // });
+    res.render('savedrecipes', {
+      ...user,
+      logged_in: true,
+    });
   } catch (err) {
     res.status(500).json(err);
   }
